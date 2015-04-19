@@ -1,21 +1,21 @@
 ﻿(function () {
 
     //Optional parameter
-    function buildAddressOptional(address1: string, city: string, address2?: string) {
+    function buildAddressOptional(address1: string, city: string, state: string, address2?: string) {
         var addr2 = (address2) ? ' Address2: ' + address2 : '';
-        displayAddress(address1 + addr2 + ', ' + city);
+        displayAddress(address1 + addr2 + ', ' + state + ', ' + city);
     }
 
     //Default parameter
-    function buildAddressDefault(address1: string, city: string, address2 = 'N/A') {
-        displayAddress('Address: ' + address1 + ' Address2: ' + address2 + ' City: ' + city);
+    function buildAddressDefault(address1: string, city: string, state: string, address2 = 'N/A') {
+        displayAddress('Address: ' + address1 + ' Address2: ' + address2 + ' City: ' + city + ' State: ' + state);
     }
 
     //Rest parameters
-    function buildAddressRest(city: string, ...restOfAddress: string[]) {
+    function buildAddressRest(city: string, state: string, ...restOfAddress: string[]) {
         var address = '';
         restOfAddress.forEach((addr) => address += ' ' + addr);
-        displayAddress(restOfAddress + ', ' + city);
+        displayAddress(restOfAddress + ', ' + city + ', ' + state);
     }
 
     function displayAddress(msg: string) {
@@ -28,15 +28,16 @@
         address: HTMLInputElement = <HTMLInputElement>$('address'),
         address2: HTMLInputElement = <HTMLInputElement>$('address2'),
         city: HTMLInputElement = <HTMLInputElement>$('city'),
+        state: HTMLInputElement = <HTMLInputElement>$('state'),
         result = $('result');
 
     //Call function with optional parameter
-    //addressButton.addEventListener('click',(e) => buildAddressOptional(address.value, city.value));
+    addressButton.addEventListener('click',(e) => buildAddressOptional(address.value, city.value, state.value));
 
     //Call function with default parameter
-    //addressButton.addEventListener('click',(e) => buildAddressDefault(address.value, city.value));
+    //addressButton.addEventListener('click',(e) => buildAddressDefault(address.value, city.value, state.value));
 
     //Call function with Rest parameters
-    addressButton.addEventListener('click',(e) => buildAddressRest(city.value, address.value, address2.value));
+    //addressButton.addEventListener('click',(e) => buildAddressRest(city.value, address.value, state.value, address2.value));
 
 } ());
