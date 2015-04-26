@@ -1,1 +1,3 @@
 node_modules/
+Cookbook/scripts/*.js
+Cookbook/scripts/*.map
